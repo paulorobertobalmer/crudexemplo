@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Contas</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div>Contas Cadastradas no Sistema <a th:href="@{/sistema/conta/novo}" >Inserir Novo</a></div>
+        <table border="1">
+            <tr>
+                <td>Código</td>
+                <td>Descrição</td>
+                <td>Tipo</td>
+                <td>Valor</td>
+                <td>Data Lançamento</td>
+                <td>Data Vencimento</td>
+                <td></td>
+            </tr>
+            <tr th:each="registro : ${registros}">
+                <td>[[${registro.id}]]</td>
+                <td>[[${registro.descricao}]]</td>
+                 <td>[[${registro.tipo}]]</td>
+                <td>[[${registro.valor}]]</td>
+                <td>[[${registro.dataLancamento}]]</td>
+                <td>[[${registro.dataVencimento}]]</td>
+                <td> <a th:href="@{/sistema/conta/editar/{id}(id=${registro.id})}" >Editar</a>
+                     <a th:href="@{/sistema/conta/excluir/{id}(id=${registro.id})}" >Excluir</a></td>
+            </tr>
+        </table>
+    </body>
+</html>

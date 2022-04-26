@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Cadastro</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div>Cadastro de Conta</div>
+        <form action="#" th:action="@{/sistema/conta/salvar}" method="POST" th:object="${registroAtual}">
+            <input type="hidden" th:field="*{id}" />
+            <p>Data Lançamento: <input type="text" th:field="*{dataLancamento}" /></p>
+            <p>Descrição: <input type="text" th:field="*{descricao}" /></p>
+            <p>Valor: <input text="number" step=".01" th:field="*{valor}"  /> </p> 
+                    <p>Tipo: <select th:field="*{tipo}">
+                            <option th:each="tp: ${tipos}" th:value="${tp.name}" th:utext="${tp}" />
+                </select>
+                    </p>
+            <p>Pessoa: <select th:field="*{pessoa}">
+                            <option th:each="ps: ${pessoas}" th:value="${ps.id}" th:utext="${ps.nome}" />
+                </select>
+                    </p>
+              <p>Data Vencimento <input type="text" th:field="*{dataVencimento}" /></p>
+            <p>Data Pagamento <input type="text" th:field="*{dataPagamento}" /></p>
+            <input type="submit" value="Salvar"/>
+        </form>
+    </body>
+</html>
